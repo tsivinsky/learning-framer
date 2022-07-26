@@ -1,3 +1,4 @@
+import { Drawer } from "@/components/Drawer";
 import { Switch } from "@/components/Switch";
 import { Tab, Tabs, TabsColor, TabsVariant } from "@/components/Tabs";
 import { NextPage } from "next";
@@ -6,6 +7,10 @@ import { useState } from "react";
 const IndexPage: NextPage = () => {
   const [tabsVariant, setTabsVariant] = useState<TabsVariant>("underline");
   const [tabsColor, setTabsColor] = useState<TabsColor>("gray");
+
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const openDrawer = () => setIsDrawerOpen(true);
+  const closeDrawer = () => setIsDrawerOpen(false);
 
   const updateTabsVariant = () => {
     if (tabsVariant === "underline") {
@@ -24,6 +29,17 @@ const IndexPage: NextPage = () => {
 
   return (
     <div className="p-2">
+      <Drawer
+        isOpen={isDrawerOpen}
+        onClose={closeDrawer}
+        maxTopOffset={50}
+        className="bg-white rounded-t-3xl"
+      >
+        <div className="w-full h-full">
+          <h2>hi mom</h2>
+        </div>
+      </Drawer>
+
       <h1 className="text-xl">
         learning{" "}
         <a
@@ -51,6 +67,10 @@ const IndexPage: NextPage = () => {
         className="mt-2"
         tabClassName="text-sm"
       />
+
+      <button onClick={openDrawer} className="mt-2">
+        open drawer
+      </button>
     </div>
   );
 };

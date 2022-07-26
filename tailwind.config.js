@@ -2,7 +2,12 @@
 module.exports = {
   content: ["./src/**/*.tsx"],
   theme: {
-    extend: {},
+    extend: {
+      zIndex: {
+        modalBackdrop: 1000,
+        modal: 1010,
+      },
+    },
   },
   plugins: [],
 };
